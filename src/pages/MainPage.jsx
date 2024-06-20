@@ -105,7 +105,7 @@ const MainPage = () => {
     const getLocationData = async (locationKey) => {
       try {
         const apiFetch = await fetch(
-          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${ApiKey}&details=true&metric=true`
+          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${ApiKey}&details=true&metric=true`
         );
         const WeatherRes = await apiFetch.json();
         // console.log(WeatherRes);
