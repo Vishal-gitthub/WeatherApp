@@ -17,6 +17,7 @@ const MainPage = () => {
   const { setData } = useContext(weathercontext);
   const imgRef = useRef(null);
   const leftSecRef = useRef(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     gsap.from(imgRef.current, {
@@ -116,13 +117,20 @@ const MainPage = () => {
       }
     };
     const FetchWeather = () => {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const locationKey = await getLocationKey(latitude, longitude);
-        if (locationKey) {
-          await getLocationData(locationKey);
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          const locationKey = await getLocationKey(latitude, longitude);
+          if (locationKey) {
+            await getLocationData(locationKey);
+          } else {
+            console.log("No location");
+          }
+        },
+        (err) => {
+          setError(err.message);
         }
-      });
+      );
     };
     FetchWeather();
   }, []);
@@ -130,6 +138,14 @@ const MainPage = () => {
   return (
     <div className="w-full h-screen sm:flex-row flex-col items-center flex bg-cover">
       {/* left Section  */}
+      <dialog
+        open
+        className={`${
+          error ? "p-10 rounded-lg text-5xl bg-red-600 z-30 " : "bg-transparent"
+        }`}
+      >
+        {error && error}
+      </dialog>
       <div className="sm:w-2/5 w-full  text-center bg-white">
         <h1 className="text-4xl">TODAY WEATHER</h1>
 
