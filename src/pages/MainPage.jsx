@@ -136,7 +136,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen sm:flex-row flex-col items-center flex bg-cover">
+    <div className="w-full h-screen sm:flex-row flex-col  flex bg-cover">
       {/* left Section  */}
       <dialog
         open
@@ -183,7 +183,7 @@ const MainPage = () => {
         </div>
       </div>
       {/* right section  */}
-      <div className="sm:w-3/5 w-full sm:auto h-screen  bg-slate-300">
+      <div className="sm:w-3/5 w-full sm:auto  bg-slate-300">
         <Navbar />
         <div>
           <Routes>
