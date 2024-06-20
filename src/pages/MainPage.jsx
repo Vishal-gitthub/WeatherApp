@@ -88,7 +88,7 @@ const MainPage = () => {
     const getLocationKey = async (lat, lon) => {
       try {
         const apiFetch = await fetch(
-~          `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${ApiKey}&q=${lat}%2C${lon}`
+          `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${ApiKey}&q=${lat},${lon}`
         );
         const apiKeyRes = await apiFetch.json();
 
